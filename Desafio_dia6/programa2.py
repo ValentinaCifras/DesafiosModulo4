@@ -1,54 +1,30 @@
 from tienda import Restaurante, Farmacia, Supermercado
+from producto import Producto
 
 print("""
-¡Bienvenido a nuestra tienda!
-Actualmente ofrecemos tres servicios:
+¡Bienvenido a nuestra tienda!""")
 
-- Restaurante
-- Farmacia
-- Supermercado
-""")
+tipo = int(input(
+    """Por favor, indique el numero de la tienda a la cual desea ingresar: \n
 
-# Menú principal
-
-nombre = input("Indique el nombre de la tiendaa a la que desea ingresar: ")
-costo_delivery = float(input("Ingrese el costo de delivery: "))
+    1. Restaurante
+    2. Farmacia
+    3. Supermercado \n
     
-if nombre.lower == 'restaurante':
-    Restaurante(nombre, costo_delivery)
-    print(f"Bienvenido a {nombre.tipo}...")
-elif nombre.lower == 'farmacia':
-    Farmacia(nombre, costo_delivery)
-    print(f"Bienvenido a {nombre.tipo}...")
-elif nombre.lower == 'supermercado':
-    Supermercado(nombre, costo_delivery)
-    print(f"Bienvenido a {nombre.tipo}...")
- 
-        
+    """))
 
-        # Ciclo para ingresar productos a la tienda
-    while True:
-            nombre_producto = input("Ingrese el nombre del producto: ")
-            precio_producto = float(input("Ingrese el precio del producto: "))
-            stock_producto = int(input("Ingrese el stock inicial del producto: "))
-            
-            tienda.ingresar_productos(nombre_producto, precio_producto, stock_producto)
-            
-            continuar = input("¿Desea ingresar otro producto? (S/N): ").upper()
-            if continuar != 'S':
-                break
+nombre = input("\nIndique el nombre de la tienda: \n")
+costo_delivery = int(input("\nIngrese el costo de delivery: \n"))
 
-        # Menú secundario
-    while True:
-            opcion = int(input("Selecciona una opción:\n1. Listar productos\n2. Realizar venta\n3. Volver al menú principal\nOpción: "))
+if tipo == 1:
+    tienda = Restaurante(nombre,costo_delivery)
+    print("\nAhora te encuentras en el Restaurante\n")
+elif tipo == 2:
+    tienda = Farmacia(nombre,costo_delivery)
+    print("\nAhora te encuentras en la Farmacia\n")
+elif tipo == 3:
+    tienda = Supermercado(nombre,costo_delivery)
+    print("\nAhora te encuentras en el supermercado\n")
 
-            if opcion == 1:
-                print(tienda.listar_productos())
-            elif opcion == 2:
-                tienda.realizar_venta(nombre_producto,cantidad)
-        
-            elif opcion == 3:
-                print("Volviendo al menú principal...")
-                break
-            else:
-                print("Opción no válida. Por favor, selecciona una opción válida.")
+
+
